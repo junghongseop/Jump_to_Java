@@ -1,0 +1,62 @@
+-변수명-
+int a;
+String b;
+
+변수의 이름은 프로그래머가 마음대로 지을 수 있음
+a,b라는 이름으로 지을 수도 있고 one, two라는 이름으로도 지을 수 있음
+
+int one;
+String two;
+
+<규칙>
+-변수명은 숫자로 시작할 수 없음
+-_와 $문자 이외의 특수문자는 사용할 수 없음
+-자바의 키워드는 변수명으로 사용할 수 없음
+
+-자료형-
+변수명 앞의 int, String 등은 변수의 자료형을 뜻함
+
+int a;
+"변수 a는 int 자료형 변수이다" 
+즉, a라는 변수에는 int 자료형 값만 담을 수 있음
+
+String b;
+"변수 b는 String 자료형 변수이다"
+즉, b라는 변수에는 String자료형 값만 담을 수 있음
+
+-변수에 값 대입하기-
+a = 1;
+"int자료형 변수 a에 1 이라는 값을 대입한다"
+
+b = "hello java";
+"String 자료형 변수 b에 "hello java"라는 값을 대입한다"
+
+int a = 1;
+String b = "hello java";
+
+String 자료형을 int 자료형으로 사용할 수 없음
+
+-자주 쓰이는 자료형-
+-int
+-long
+-double
+-boolean
+-char
+-String
+-StringBuffer
+-List
+-Map
+-Set
+
+StringBuffer sb;
+List myList;
+
+"sb변수 는 StringBuffer 자료형 변수이다. sb변수에는 StringBuffer 자료향에 해당하는 값만 담을 수 있다"
+"myList변수는 List자료형 변수이다. myList변수에는 List자료형에 해당하는 값만 담을 수 있다"
+
+-사용자 정의 자료형-
+만약 Animal이라는 클래스를 만들면,
+Animal자료형 변수를 만들 수 있다.
+
+"cat이라는 변수는 Animal 자료형 변수이다. cat이라는 변수에는  Animal자료형에 해당되는 값만 담을 수 있다"
+
