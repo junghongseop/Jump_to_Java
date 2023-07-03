@@ -1,0 +1,38 @@
+참 또는 거짓의 값을 갖는 자료형을 불 자료형이라고 함
+자료형의 명칭은 boolean
+불 자료형에 대입되는 값은 참 또는 거짓만 가능
+
+ex) 
+boolean isSuuccess = true;
+boolean isTest = false;
+
+-불 연산-
+불 자료형에는 불 연산의 결과값들이 대입될 수 있음
+불 연산은 참, 거짓을 판단하는 연산을 말함
+
+ex)
+2 > 1		//참
+1 == 2		//거짓
+3%2 == 1	//참
+"3".equals("2")	//거짓
+
+-조건문-
+int base = 180;
+int height = 185;
+boolean isTall = height > base;
+
+if (isTall){
+	Sysyem.out.println("키가 큽니다.");
+}
+
+출력 - 키가 큽니다.
+
+int i = 3;
+boolean isOdd = i % 2 == 1;
+System.out.println(isOdd);
+
+출력 - true
+
+i % 2 == 1은 i를 2로 나누었을 때 나머지가 1인지를 묻는 조건문임
+i는 3이므로 3을 2로 나눈 나머지는 1이 되어 참이 됨
+=> isOdd는 true값을 갖게 됨 

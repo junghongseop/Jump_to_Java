@@ -1,0 +1,55 @@
+-append-
+StringBuffer 자료형은 append메서드를 사용하여 계속해서 문자열을 추가해나갈 수 있음
+toString()메서드를 이용하여 String자료형으로 변경할 수 있음
+
+ex)
+StringBuffer sb = new StringBuffer();  // StringBuffer 객체 sb 생성
+sb.append("hello");
+sb.append(" ");
+sb.append("jump to java");
+String result = sb.toString();
+System.out.println(result);  // "hello jump to java" 출력
+
+StringBuffer객체는 한번만 생성됨
+
+String자료형에 +연산이 있을 때마다 새로운 String객체가 생성됨
+
+ex)
+String result = "";
+result += "hello";
+result += " ";
+result += "jump to java";
+System.out.println(result);  // "hello jump to java" 출력
+
+총 4개의 String자료형 객체가 만들어짐
+
+String자료형은 한번 값이 생성되면 그 값을 변경할 수가 없음
+값을 변경할 수 없는 것을 immutable하다고 함
+trim, toUpperCase등의 메서드를 보면 문자열이 변경되는 것처럼 생각 될 수도 있음 그렇ㅈ만 해당 메서드 수행 시 다른 String객체를 생성하여 리턴할 뿐임.
+하지만 StringBuffer는 반대로 값을 변경할 수 있다. 즉, 한번 생성된 값을 언제든지 수정 가능
+
+String자료형은 String자료형보다 무거운 편임
+new StringBuffer()로 객체를 생성하는 것은 일반 String을 사용하는 것보다 메모리 사용량도 많고 속도도 느림
+따라서 문자열 추가나 변경등의 작업이 많을 경우에는 StringBuffer를, 문자열 변경 작업이 거의 없는 경우에는  그냥 String을 사용하는 것이 유리함
+
+
+-insert-
+insert메서드는 특정위치에 원하는 문자열을 삽입할 수 있음
+
+ex)
+String result = "";
+result += "hello";
+result += " ";
+result += "jump to java";
+System.out.println(result);  // "hello jump to java" 출력
+
+
+-substring-
+substring메서드는 String자료형의 substring메서드와 동일하게 동작
+
+ex)
+StringBuffer sb = new StringBuffer();
+sb.append("Hello jump to java");
+System.out.println(sb.substring(0, 4));
+
+substring와 같이 사용하면 StringBuffer객체의 시작위치에서 끝위치까지의 문자를 뽑아냄
