@@ -1,0 +1,161 @@
+집합 자료형은 집합과 관련된 것을 쉽게 처리하기 위해 만든 자료형
+
+
+-집합 자료형은 어떻게 만들까?-
+ex)
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>(Arrays.asList("H", "e", "l", "l", "o"));
+        System.out.println(set);  //  [e, H, l, o] 출력
+    }
+}
+
+*Set자료형
+Set자료형에는 HashSet, TreeSet, LinkedHashSet등의 Set인터페이스를 구현한 자료형이 있음
+
+-집합 자료형의 특징-
+집합자료형의 특징
+-중복을 허용하지 않는다
+-순서가 없다
+
+리스트나 배열은 순서가 있기 때문에 인덱싱을 통해 자료형의 값을 얻을 수 있지만 자료형은 순서가 없기 때문에 인덱싱으로 값을 얻을 수 없음
+맵 자료형 역시 순서가 없는 자료형이라 인덱싱을 지원하지 않음
+
+중복을 허용하지 않는 집합 자료형의 특징은 자료형의 중복을 제거하기 위한 필터 역할로 종종 사용
+
+-교집합, 합집합, 차집합 구하기-
+ex)
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<Integer> s1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        HashSet<Integer> s2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8, 9));
+    }
+}
+
+s1은 1부터 6까지의 값을 가지게 되었고, s2는 4부터 9까지의 값을 가지게 되었음
+
+제네릭스로 int를 사용하고 싶은 경우에는 int의 Wrapper클래스인 Integer를 대신 사용해야 함
+
+1. 교집합
+ex)
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<Integer> s1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        HashSet<Integer> s2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8, 9));
+
+        HashSet<Integer> intersection = new HashSet<>(s1);  // s1으로 intersection 생성
+        intersection.retainAll(s2);  // 교집합 수행
+        System.out.println(intersection);  // [4, 5, 6] 출력
+    }
+}
+
+retainAll 메서드를 이용하면 교집합을 간단히 구할 수 있음
+s1의 데이터를 유지하기 위해 s1으로 intersection이라는 HashSet객체를 Copy하여 생성함
+만약 intersection대신 s1에 retainAll메서드를 사용하면 s1의 내용이 변경 될 것임
+
+retainAll메서드로 교집합을 수행한 후 intersection을 출력하거나 교집합에 해당되는 [4, 5, 6]이 출력
+
+2.합집합
+4, 5, 6처럼 중복해서 포함된 값은 한 개씩만 표현
+
+ex)
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<Integer> s1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        HashSet<Integer> s2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8, 9));
+
+        HashSet<Integer> union = new HashSet<>(s1);  // s1으로 union 생성
+        union.addAll(s2); // 합집합 수행
+        System.out.println(union);  // [1, 2, 3, 4, 5, 6, 7, 8, 9] 출력
+    }
+}
+
+합집합은 addAll메서드를 사용항 구할 수 있음
+합집합의 결과로 [1, 2, 4, 5, 6, 7, 8, 9]을 출력
+
+3.차집합
+ex)
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<Integer> s1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        HashSet<Integer> s2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8, 9));
+
+        HashSet<Integer> substract = new HashSet<>(s1);  // s1으로 substract 생성
+        substract.removeAll(s2); // 차집합 수행
+        System.out.println(substract);  // [1, 2, 3] 출력
+    }
+}
+
+차집합은 removeAll메서드를 사용하여 구할수 잇음
+차집합의 결과로 [1, 2, 3]을 출력
+
+-집합 자료형 관련 메서드-
+집합 자료형에 값을 추가할 때에는 add메서드를 사용
+
+ex)
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+        set.add("Jump");
+        set.add("To");
+        set.add("Java");
+        System.out.println(set);  // [Java, To, Jump] 출력
+    }
+}
+
+-값 여러개 추가하기-
+여러개의 값을 한꺼번에 추가할 때는 addAll메서드를 사용함
+
+ex)
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>();
+        set.add("Jump");
+        set.addAll(Arrays.asList("To", "Java"));
+        System.out.println(set);  // [Java, To, Jump] 출력
+    }
+}
+
+합집합을 구할 때도 addAll을 사용
+
+-특정 값 제거하기-
+특정 값 제거하고 싶을 때는 remove메서드를 사용
+
+ex)
+import java.util.Arrays;
+import java.util.HashSet;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<>(Arrays.asList("Jump", "To", "Java"));
+        set.remove("To");
+        System.out.println(set);  // [Java, Jump] 출력
+    }
+}
+
+*TreeSet과 LinkedHashSet
+Set자료형은 순서가 없다는 특징있음
+하지만 가끔은 Set에 입력된 순서대로 데이터를 가져우는 싶은 경우도 있고 때로는 오름차순으로 정렬된 데이터를 가져오고 싶을 수도 있을 것
+
+-TreeSet: 오름차순으로 값을 정렬하여 저장하는 특징이 있음
+-LinkedHashSet: 입력한 순서대로 값을 정렬하여 저장하는 특징이 있음
