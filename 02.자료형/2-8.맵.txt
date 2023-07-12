@@ -1,0 +1,82 @@
+자바의 맵은 이러한 대응관계를 쉽게 표현할 수 있게 해 주는 자료형
+대부분의 언어들도 갖고 잇는 자료형으로 Associative array, Hash라고 불림
+
+맵은 사전과 비슷
+people이란 단어에 "사람", baseball이라는 단어에 "야구"라는 뜻이 부합되듯이 Map은 Key와 Value를 한 쌍으로 갖는 자료형임
+
+key		value
+people		사람
+baseball	야구
+
+Map은 리스트나 배열처럼 순차적으로 해당 요소 값을 구하지 않고 key를 통해 value를 얻음
+맵의 가장 큰 특징이라면 key로 value를 얻어낸다는 점
+
+-HashMap-
+
+*Map은 인터페이스임. Map 인터페이스를 구현한 Map자료형에는 HashMap, LinkedHashMap, TreeMap등이 있음. 
+
+*put*
+ex)
+import java.util.HashMap;
+
+public class Sample {
+    public static void main(String[] args) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("people", "사람");
+        map.put("baseball", "야구");
+    }
+}
+
+key와 value는 put메서드를 이요하여 추가할 수 있음
+
+HashMap 역시 제네릭스를 이용
+HashMap의 제네릭스는 Key, Value 모두 String타입이다. 따라서 Key, Value에 String 이외의 자료향은 사용할 수 없음
+
+*get*
+key에 해당하는 value값을 얻기 위해서는 get메서드를 사용
+
+ex)
+System.out.println(map.get("people"));	//"사람" 출력
+
+map객체의 키 "people"에 대응하는 값 "시림"이 출력
+
+*size*
+size메서드는 Map의 갯수를 리턴
+
+ex)
+Systm.out.println(map.size());	//1이 출력
+
+"people". "baseball" 두 값을 가지고 있다가 "people"항목이 삭제되었으므로 1이 출력
+
+*ketSet*
+keySet은 맵의 모든 key를 모아서 리턴
+
+ex)
+import java.util.HashMap;
+
+public class Sample{
+	public static void main(String[] args){
+		HashMap<String, String> map = new HashMap<>();
+		map.put("people", "사람");
+		map.put("baseball", "야구");
+		System.out.println(map.keySet());	//[baseball, people] 출력
+	}
+}
+
+keySet()메서드는 Map의 모든 Key를 모아서 Set 자료형으로 리턴함
+Set자료형은 List자료형으로 바꾸어 사용할수도 있음
+
+ex)
+List<String> keyList = new ArrayList<>(map.keySet());
+
+*LinkedHashMap과 TreeMap
+Map의 가장 큰 특징은 순서에 의존하지 않고 key로 value를 가져오는 데 있음.
+하지만 가끔은 Map에 입력된 순서대로 데이터를 가져오고  싶은 경우도 있고 때로는 입력된 key에 의해 소트되도록 저장하고 싶을수도 있을 것임
+
+LinkedHashMap과 TreeMap을 사용하는 것이 유리
+
+-LinkedHashMap은 입력된 순서대로 데이터를 저장하는 특징이 있음
+-TreeMap은 입력된 key의 오름차순 순서로 데이터를 저장하는 특징을 가지고 있음
+
+
+
