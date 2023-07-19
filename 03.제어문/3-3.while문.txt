@@ -1,0 +1,129 @@
+while문은 문장을 반복해서 수행해야 할 경우에 사용
+
+-while문의 기본구조-
+while(조건문){
+	<수행할 문장1>
+	<수행할 문장2>
+	...
+	...
+	...
+}
+조건문이 참인 동안 while문의 수행할 문장들을 반복하여 수행
+
+ex)
+int treeHit = 0;
+while (treeHit < 10) {
+    treeHit++;
+    System.out.println("나무를  " + treeHit + "번 찍었습니다.");
+    if (treeHit == 10) {
+        System.out.println("나무 넘어갑니다.");
+    }
+}
+
+결과
+나무를  1번 찍었습니다.
+나무를  2번 찍었습니다.
+나무를  3번 찍었습니다.
+나무를  4번 찍었습니다.
+나무를  5번 찍었습니다.
+나무를  6번 찍었습니다.
+나무를  7번 찍었습니다.
+나무를  8번 찍었습니다.
+나무를  9번 찍었습니다.
+나무를  10번 찍었습니다.
+나무 넘어갑니다.
+
+treeHit가 10보다 작은 동안에 while문안의 문장들을 계속 수행
+while문 안의 문장을 보면 제일 먼저 treeHit++로 treeHit값이 1씩 증가
+나무를 treeHit번만큼  찍었음을 알리는 문장을 출력하고 treeHit가 10이 되면 "나무 넘어갑니다"라는 문장을 출력하고 treeHit<10라는 조건문이 거짓이 되어 while문을 빠져 나가게 됨
+
+treeHit++는 프로그래밍을 할 때 매우 자주 사용하는 기법으로 treeHit의 값을 1만큼씩 증가시킬 목적으로 쓰이는 것
+
+treeHit++ = treeHit += 1
+
+-무한루프-
+무한 루프는 무한히 반복한다는 의미
+
+*무한루프의 구조
+while(true){
+	<수행할 문장1>
+	<수행할 문장2>
+	...
+}
+
+while의 조건문이 true이므로 조건문은 항상 참이 됨
+while은 조건문이 참인 동안 while에 속해 있는 문장들을 계속해서 수행하므로 무한하게 while문 내의 문장들을 수행할 것
+
+ex)
+while (true) {
+    System.out.println("Ctrl-C를 눌러야 while문을 빠져 나갈 수 있습니다.");
+}
+
+결과
+Ctrl-C를 눌러야 while문을 빠져 나갈 수 있습니다.
+Ctrl-C를 눌러야 while문을 빠져 나갈 수 있습니다.
+Ctrl-C를 눌러야 while문을 빠져 나갈 수 있습니다.
+...
+
+-while문 빠져 나가기-
+while문을 강제로 멈춰야 할 때 사용하는 것이 break
+
+ex)
+int coffee = 10;
+int money = 300;
+
+while (money > 0) {
+    System.out.println("돈을 받았으니 커피를 줍니다.");
+    coffee--;
+    System.out.println("남은 커피의 양은 " + coffee + "입니다.");
+    if (coffee == 0) {
+        System.out.println("커피가 다 떨어졌습니다. 판매를 중지합니다.");
+        break;
+    }
+}
+
+*결과
+돈을 받았으니 커피를 줍니다.
+남은 커피의 양은 9입니다.
+돈을 받았으니 커피를 줍니다.
+
+(... 생략 ...)
+
+남은 커피의 양은 1입니다.
+돈을 받았으니 커피를 줍니다.
+남은 커피의 양은 0입니다.
+커피가 다 떨어졌습니다. 판매를 중지합니다.
+
+money가 300으로 고정되어 있으니까 while(money>0)에서 money는 0보다 크기 때문에 항상 참
+따라서 무한 루프를 돌게 됨
+while문이 수행되면 coffee--에 의해서 coffee의 개수가 한개 씩 줄어들게 됨
+
+만약 coffee가 0이 되면 if (coffee == 0)문장이 참이 되므로 break가 호출되어 while문을 빠져 나감
+
+-while문 조건문으로 돌아가기-
+while문 안의 문장을 수행할 때 어떤 조건을 검사해서 조건에 맞지 않는 경우 while문을 빠져나가는 대신 while문의 맨 처음으로 돌아가게 하고 싶은 경우도 있음
+
+ex)
+int a = 0;
+while (a < 10) {
+    a++;
+    if (a % 2 == 0) {
+        continue;  // 짝수인 경우 조건문으로 돌아간다.
+    }
+    System.out.println(a);  // 홀수만 출력된다.
+}
+
+결과
+1
+3
+5
+7
+9
+
+a가 10보다 작은 동안 a는 1만큼 씩 계속 증가
+if(a%2 == 0)이 참이 되는 경우는 a가 짝수일 때임
+즉, a가 짝수이면 continue문장이 수행
+continue문은 while문의 맨 처음으로 돌아가게 하는 명령어
+따라서 a가 짝수이면 System.out.println(a)는 수행되지 않기 때문에 홀수만 출력될 것
+
+
