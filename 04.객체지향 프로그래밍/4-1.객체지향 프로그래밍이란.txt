@@ -1,0 +1,78 @@
+ex)
+class Calculator{
+	static int result  = 0;
+	
+	static int add(int num){
+		result += num;
+		return result;
+	}
+}
+
+public class Sample{
+	public static void main(String[] args){
+		System.out.println(Caluclator.add(3));	//3
+		System.out.println(Caluclator.add(4));	//7
+	}
+}
+
+add메서드는 매개변수 num으로 받은 값을 이전에 계산한 결괏값에 더한 후 돌려주는 메서드임
+이전에 계산한 결괏값을 유지하기 위해서 reult전역 변수를 사용했음
+
+2개의 계산기가 필요하다면?
+class Calculator1 {
+    static int result = 0;
+
+    static int add(int num) {
+        result += num;
+        return result;
+    }
+}
+
+class Calculator2 {
+    static int result = 0;
+
+    static int add(int num) {
+        result += num;
+        return result;
+    }
+}
+
+
+public class Sample {
+    public static void main(String[] args) {
+        System.out.println(Calculator1.add(3));	//3
+        System.out.println(Calculator1.add(4));	//7
+
+        System.out.println(Calculator2.add(3));	//3
+        System.out.println(Calculator2.add(7));	//10
+    }
+}
+
+객체를 사용하면
+class Calculator {
+    int result = 0;
+
+    int add(int num) {
+        result += num;
+        return result;
+    }
+}
+
+
+public class Sample {
+    public static void main(String[] args) {
+        Calculator cal1 = new Calculator();  // 계산기1 객체를 생성한다.
+        Calculator cal2 = new Calculator();  // 계산기2 객체를 생성한다.
+
+        System.out.println(cal1.add(3));	//3
+        System.out.println(cal1.add(4));	//7
+
+        System.out.println(cal2.add(3));	//3
+        System.out.println(cal2.add(7));	//10
+    }
+}
+
+Calculator클래스로 만든 별개의 계산기 cal1, cal2가 각각의 역할을 수행
+계산기의 결괏값 역시 다른 계산기의 결괏값과 상관없이 독립적인 값을 유지
+객체를 사용하면 계산기 대수가 늘어나더라도 객체를 생성하면 되기 때문에 매우 간단해짐
+
